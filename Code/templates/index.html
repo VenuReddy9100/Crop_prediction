@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Forecast Pioneers</title>
+    <!-- Bootstrap 4 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Ensure the body takes the full height of the viewport */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Make the main content take the remaining space */
+        .main-content {
+            min-height: calc(100vh - 80px); /* Adjust the height to be full viewport height minus the navbar height */
+        }
+
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            padding: 1rem;
+            background-color: #343a40;
+        }
+    
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+        .navbar-brand img {
+            border-radius: 50%; /* Makes the image round */
+            object-fit: cover; /* Ensures the image fits within the circle */
+            width: 50px; /* Keeps the same width */          
+            height: 50px; /* Keeps the same height */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional: Add a subtle shadow */
+            margin-right: 10px; /* Adjust the gap between the image and the text */
+
+        }
+
+        .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff !important;
+            margin-left: 20px;
+        }
+
+        .nav-link:hover {
+            color: #f8f9fa !important;
+        }
+
+        /* Hero Section */
+        #hero {
+            background-image: url('{{ url_for("static", filename="images/Hero.GIF") }}');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* About Section */
+        #about {
+            padding: 50px 0;
+            background-size: cover;
+            background-position: center;
+            color: black;
+            text-shadow: 2px 2px 5px rgba(255, 255,255, 0.7);
+        }
+        #about h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Features Section */
+        #features {
+            background-image: url('{{ url_for("static", filename="images/background.png") }}');
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            color:white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        #features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* Custom styles for FAQ section */
+        #faq {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
+
+        #faq h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+
+        .accordion .card-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .accordion .card-body {
+            background-color: #f1f1f1;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .accordion .btn-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .accordion .btn-link:hover {
+            color: #0056b3;
+        }
+
+        .accordion .btn-link.collapsed {
+            color: #6c757d;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a {
+            font-size: 20px;
+            color: #fff;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #17a2b8;
+        }
+
+        /* Add responsive font sizes and layout adjustments */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .nav-link {
+                font-size: 16px;
+            }
+
+            #about h2 {
+                font-size: 2rem;
+            }
+
+            .faq-item h5 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Farm Forecast Pioneers Logo" width="50" height="50" class="d-inline-block align-top">
+            Farm Forecast Pioneers
+        </a>
+        <!-- Navbar Toggle for Mobile -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('predict') }}">Predict</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero">
+    <div>
+        <h1 class="display-4 font-weight-bold">Farm Forecast Pioneers</h1>
+        <p class="lead">Predict crop recommendations and yield with ease</p>
+        <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container text-center">
+        <h2 class="display-4">About the Project</h2>
+        <p class="lead">Farm Forecast Pioneers uses machine learning to predict the best crops based on soil, climate conditions, and geographical factors. Our goal is to empower farmers with accurate predictions to boost yield and optimize resources.</p>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features">
+    <div class="container text-center">
+        <h2>Our Features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Real-Time Predictions</h4>
+                <p>Get instant crop recommendations and yield forecasts based on real-time environmental data.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Easy to Use</h4>
+                <p>Simply input your region's data, and our models will provide you with the best crop options and expected yield.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Data-Driven Insights</h4>
+                <p>Leverage historical and current weather patterns to make the best farming decisions for the future.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <h2 class="text-center font-weight-bold mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="accordionExample">
+            <!-- First Question -->
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How accurate are the predictions?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Our models are trained on historical data and provide predictions based on up-to-date environmental conditions, making them highly accurate.
+                    </div>
+                </div>
+            </div>
+            <!-- Second Question -->
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How do I use this tool?
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Simply enter your region's environmental data into the form, and our system will predict the best crop and expected yield for you.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Farm Forecast Pioneers | All rights reserved.</p>
+        <div>
+            <a href="https://facebook.com" target="_blank" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

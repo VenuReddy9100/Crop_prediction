@@ -1,0 +1,154 @@
+/* Global Styles */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Card Styling */
+.card {
+    margin-top: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-body {
+    padding: 25px;
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Form Styling */
+.form-group label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Icon Integration in Form Fields */
+.form-group .form-control-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .card-header {
+        font-size: 1.4rem;
+        padding: 15px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        margin-top: 10px;
+    }
+
+    .card-header {
+        font-size: 1.2rem;
+        padding: 12px;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+/* Custom Styles for Icons */
+.form-group {
+    position: relative;
+}
+
+.form-group .form-control-icon {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+

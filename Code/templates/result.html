@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header-bg {
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+        }
+        .container{
+            height: 95vh;
+            margin-bottom: 10px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .crop-image {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-bg text-center">
+        <h3>Farm Forecast Pioneers</h3>
+        <p>Predicting Crop Yields and Recommendations</p>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h3>Prediction Results</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>Recommended Crop: <span class="text-success">{{ crop }}</span></h4>
+                        <h5>Expected Yield: <span class="text-info">{{ yield_pred }} tons/ha</span></h5>
+                        <br>
+
+                        <!-- Crop Image Display -->
+                        <div class="text-center">
+                            <img src="{{ url_for('static', filename='Assets/' + crop.lower() + '.jpg') }}" alt="Crop Image" class="crop-image">
+                        </div>
+
+                        <br>
+                        <p class="text-center">Thank you for using Farm Forecast Pioneers. We hope this helps you make informed decisions!</p>
+                        
+                        <a href="/" class="btn btn-primary btn-block">Try Again</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Farm Forecast Pioneers. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

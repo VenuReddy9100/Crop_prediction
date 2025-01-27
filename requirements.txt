@@ -1,0 +1,10 @@
+numpy==1.24.3                     # For numerical computations
+pandas==2.1.3                     # For data manipulation and analysis
+matplotlib==3.8.0                 # For data visualization (e.g., confusion matrix)
+seaborn==0.12.2                   # For enhanced visualizations (heatmaps)
+scikit-learn==1.6.0               # For machine learning algorithms (classification and regression)
+xgboost==1.7.6                    # For advanced machine learning (XGBRegressor)
+openpyxl==3.1.2                   # To read/write Excel files (.xlsx)
+joblib==1.3.0                     # For saving and loading trained models (optional but recommended)
+Flask==2.2.2                      # Flask for the web framework
+werkzeug==2.2.3                   # For WSGI utility library compatibility with Flask

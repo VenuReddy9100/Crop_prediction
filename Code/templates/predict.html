@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Farm Forecast Pioneers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('predict') }}">Predict</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <h2>Enter the Details for Prediction</h2>
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <div class="form-group">
+                        <label for="N">Nitrogen content (N):</label>
+                        <input type="number" class="form-control" id="N" name="N" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="P">Phosphorous content (P):</label>
+                        <input type="number" class="form-control" id="P" name="P" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="K">Potassium content (K):</label>
+                        <input type="number" class="form-control" id="K" name="K" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="temperature">Temperature (°C):</label>
+                        <input type="float" class="form-control" id="temperature" name="temperature" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="humidity">Humidity (%):</label>
+                        <input type="float" class="form-control" id="humidity" name="humidity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph">pH value of soil:</label>
+                        <input type="float" class="form-control" id="ph" name="ph" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rainfall">Rainfall (mm):</label>
+                        <input type="float" class="form-control" id="rainfall" name="rainfall" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Predict</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Farm Forecast Pioneers. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
